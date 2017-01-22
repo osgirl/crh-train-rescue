@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-@Entity(name = "train")
+@Entity
 @Table(name = "train")
 @EqualsAndHashCode(exclude = "type")
 public class Train implements Serializable {

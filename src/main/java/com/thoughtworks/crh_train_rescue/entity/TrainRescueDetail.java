@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity(name = "train_rescue_detail")
+@Entity
 @Table(name = "train_rescue_detail")
 @EqualsAndHashCode
 public class TrainRescueDetail {

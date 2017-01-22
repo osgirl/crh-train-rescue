@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table
+@Table(name = "train_rescue_view")
 @EqualsAndHashCode
 public class TrainResuce {
     @Id
