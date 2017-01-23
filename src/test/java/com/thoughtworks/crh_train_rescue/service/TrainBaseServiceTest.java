@@ -12,13 +12,15 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TrainServiceTest {
+public class TrainBaseServiceTest {
+    @Autowired
+    TrainBaseService trainBaseService;
     @Autowired
     TrainRepository trainRepository;
 
     @Test
     public void shouldReturnTrainGivenId () {
-        Train firstTrain = trainRepository.findOne(1);
+        Train firstTrain = trainBaseService.getTrainById("1");
         assertEquals("train1", firstTrain.getName());
     }
 }
