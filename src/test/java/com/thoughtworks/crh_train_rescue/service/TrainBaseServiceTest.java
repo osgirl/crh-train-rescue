@@ -20,7 +20,7 @@ public class TrainBaseServiceTest {
 
     @Test
     public void shouldReturnTrainGivenId () {
-        Train firstTrain = trainBaseService.getTrainById("1");
+        Train firstTrain = trainBaseService.fineOne(1);
         assertEquals("train1", firstTrain.getName());
     }
 }

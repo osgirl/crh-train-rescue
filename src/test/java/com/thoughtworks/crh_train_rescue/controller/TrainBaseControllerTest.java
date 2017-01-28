@@ -33,5 +33,4 @@ public class TrainBaseControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Hello!")));
     }
-
 }

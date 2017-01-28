@@ -14,7 +14,7 @@ public class TrainRescueService {
     private TrainBaseService trainBaseService;
 
     @Autowired
-    public TrainRescueService(TrainRescueRepository trainRescueRepository, TrainBaseService trainBaseService) {
+    public TrainRescueService(TrainRescueRepository trainRescueRepository, TrainBaseServiceImpl trainBaseService) {
         this.trainRescueRepository = trainRescueRepository;
         this.trainBaseService = trainBaseService;
     }
