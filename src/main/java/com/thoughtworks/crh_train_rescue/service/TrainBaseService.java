@@ -10,5 +10,5 @@ public interface TrainBaseService {
     Train save(Train train);
     void remove(int trainId);
     List<Train> findAll();
-
+    Train update(Train train, int trainId);
 }

@@ -20,10 +20,15 @@ public class TrainBaseController {
         return ResponseEntity.ok(trainBaseService.findAll());
     }
 
+    @PostMapping
+    public ResponseEntity<Train> create(@RequestBody Train train) {
+        return  ResponseEntity.ok(trainBaseService.save(train));
 
-    @PutMapping()
-    public Train put(Train train) {
-        return trainBaseService.save(train);
+    }
+
+    @PutMapping(value = "/{trainId}")
+    public ResponseEntity<Train> update(@RequestBody Train train, @PathVariable(value = "trainId") int id) {
+        return ResponseEntity.ok(trainBaseService.update(train, id));
     }
 
     @GetMapping(value = "/{trainId}")
@@ -33,8 +38,8 @@ public class TrainBaseController {
     }
 
     @DeleteMapping(value = "/{trainId}")
-    public String remove(@PathVariable(value = "trainId") int id) {
+    public ResponseEntity remove(@PathVariable(value = "trainId") int id) {
         trainBaseService.remove(id);
-        return "ok";
+        return ResponseEntity.ok("deleted!");
     }
 }

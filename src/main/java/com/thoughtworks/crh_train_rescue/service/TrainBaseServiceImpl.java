@@ -49,4 +49,9 @@ public class TrainBaseServiceImpl implements TrainBaseService {
     public List<Train> findAll() {
         return trainRepository.findAll();
     }
+
+    public Train update(Train train, int trainId){
+        train.setId(trainId);
+        return trainRepository.saveAndFlush(train);
+    }
 }

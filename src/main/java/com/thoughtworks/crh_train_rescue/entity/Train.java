@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "train")
-@EqualsAndHashCode(exclude = "type")
+@EqualsAndHashCode(exclude = {"type", "deleted"})
 public class Train implements Serializable {
     @Id
     @GeneratedValue
