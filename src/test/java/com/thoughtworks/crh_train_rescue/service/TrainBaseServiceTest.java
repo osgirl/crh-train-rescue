@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -20,7 +23,8 @@ public class TrainBaseServiceTest {
 
     @Test
     public void shouldReturnTrainGivenId () {
-        Train firstTrain = trainBaseService.fineOne(1);
-        assertEquals("train1", firstTrain.getName());
+        Optional<Train> firstTrain = trainBaseService.findOne(1);
+        assertTrue(firstTrain.isPresent());
+        assertEquals("train1", firstTrain.get().getName());
     }
 }

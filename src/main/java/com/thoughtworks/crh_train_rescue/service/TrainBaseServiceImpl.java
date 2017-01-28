@@ -8,6 +8,9 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class TrainBaseServiceImpl implements TrainBaseService {
     private TrainRepository trainRepository;
@@ -26,15 +29,24 @@ public class TrainBaseServiceImpl implements TrainBaseService {
 
     @Override
     @Cacheable(value = "train", key = "#trainId")
-    public Train fineOne(int trainId) {
+    public Optional<Train> findOne(int trainId) {
         System.out.println("update cached : " + trainId);
-        return trainRepository.findOne(trainId);
+        return Optional.ofNullable(trainRepository.findOne(trainId));
     }
 
     @Override
     @CacheEvict(value = "train", key = "#trainId")
     public void remove(int trainId) {
         System.out.println("remove cached : " + trainId);
-        //trainRepository.delete(trainId);
+        Optional<Train> one = this.findOne(trainId);
+        one.ifPresent(train-> {
+            train.setDeleted(true);
+            this.save(train);
+        });
+    }
+
+    @Override
+    public List<Train> findAll() {
+        return trainRepository.findAll();
     }
 }

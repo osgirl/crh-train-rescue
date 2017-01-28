@@ -7,25 +7,29 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
-@RequestMapping(value = "trains")
+@RequestMapping(value = "/trains")
 public class TrainBaseController {
     @Autowired
     TrainBaseService trainBaseService;
 
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity mainPage() {
-        return ResponseEntity.ok("Hello!");
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity findAllTrains() {
+        return ResponseEntity.ok(trainBaseService.findAll());
     }
 
-    @PutMapping
+
+    @PutMapping()
     public Train put(Train train) {
         return trainBaseService.save(train);
     }
 
     @GetMapping(value = "/{trainId}")
-    public Train get(@PathVariable(value = "trainId") int id) {
-        return trainBaseService.fineOne(id);
+    public ResponseEntity<Train> get(@PathVariable(value = "trainId") int id) {
+        Optional<Train> trainOptional = trainBaseService.findOne(id);
+        return trainOptional.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping(value = "/{trainId}")

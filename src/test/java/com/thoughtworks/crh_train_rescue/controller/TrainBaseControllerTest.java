@@ -11,8 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -28,9 +26,23 @@ public class TrainBaseControllerTest {
     }
 
     @Test
-    public void mainPage() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON_VALUE))
+    public void shouldReturnTrainListWithStatus200() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/trains").accept(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Hello!")));
+                .andReturn();
+    }
+
+    @Test
+    public void shouldReturnTrainWithStatus200GivenValidId() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/trains/1").accept(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    public void shouldReturnStatus404GivenInvalidId () throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/trains/5").accept(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(status().isNotFound())
+                .andReturn();
     }
 }

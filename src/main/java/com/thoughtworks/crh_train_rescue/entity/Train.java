@@ -19,4 +19,5 @@ public class Train implements Serializable {
     @Column(nullable = false)
     private String name;
     private String type;
+    private boolean deleted;
 }
