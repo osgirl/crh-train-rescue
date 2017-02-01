@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Optional;
 
 @RestController
@@ -21,8 +23,9 @@ public class TrainBaseController {
     }
 
     @PostMapping
-    public ResponseEntity<Train> create(@RequestBody Train train) {
-        return  ResponseEntity.ok(trainBaseService.save(train));
+    public ResponseEntity<Train> create(@RequestBody Train train) throws URISyntaxException {
+        Train saved = trainBaseService.save(train);
+        return ResponseEntity.created(new URI("/trains"+saved.getId())).build();
 
     }
 
@@ -40,6 +43,6 @@ public class TrainBaseController {
     @DeleteMapping(value = "/{trainId}")
     public ResponseEntity remove(@PathVariable(value = "trainId") int id) {
         trainBaseService.remove(id);
-        return ResponseEntity.ok("deleted!");
+        return ResponseEntity.notFound().build();
     }
 }

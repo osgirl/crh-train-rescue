@@ -11,9 +11,9 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TrainRescueServiceTest {
+public class TrainRescueServiceImplTest {
     @Autowired
-    TrainRescueService trainRescueService;
+    TrainRescueServiceImpl trainRescueService;
     @Test
     public void shouldReturnTrainRescueGivenId () {
         TrainRescue trainRescue = trainRescueService.getTrainRescueById("1");
