@@ -9,14 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TrainRescueServiceImpl {
+public class TrainRescueServiceImpl implements TrainRescueService{
     private TrainRescueRepository trainRescueRepository;
-    private TrainBaseService trainBaseService;
 
     @Autowired
-    public TrainRescueServiceImpl(TrainRescueRepository trainRescueRepository, TrainBaseServiceImpl trainBaseService) {
+    public TrainRescueServiceImpl(TrainRescueRepository trainRescueRepository) {
         this.trainRescueRepository = trainRescueRepository;
-        this.trainBaseService = trainBaseService;
     }
 
     public TrainRescue getTrainRescueById(String rescueId) {
@@ -27,7 +25,7 @@ public class TrainRescueServiceImpl {
         return null;
     }
 
-    public List<Train> getToResuceTrainByRescueTrain(String rescueTrain) {
+    public List<Train> getToRescueTrainByRescueTrain(String rescueTrain) {
         return null;
     }
 

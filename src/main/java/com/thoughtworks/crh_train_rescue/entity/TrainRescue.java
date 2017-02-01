@@ -18,6 +18,8 @@ public class TrainRescue implements Serializable {
     private int id;
     @Column(nullable = false)
     private int rescueTrainId;
+    private int rescueTrainName;
     @Column(nullable = false)
     private int toRescueTrainId;
+    private String toRescueTrainName;
 }

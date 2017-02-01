@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class TrainRescueDetailService {
     private TrainRescueDetailRepository trainRescueDetailRepository;
-    private TrainRescueService trainRescueService;
+    private TrainRescueServiceImpl trainRescueService;
     private TrainBaseService trainBaseService;
 }
