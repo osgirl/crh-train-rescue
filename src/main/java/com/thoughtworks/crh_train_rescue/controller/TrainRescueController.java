@@ -28,8 +28,13 @@ public class TrainRescueController {
         return ResponseEntity.ok(trainRescueService.getRescues(requestParamMap));
     }
 
-    @GetMapping
+    @GetMapping(value = "/detail")
     public ResponseEntity<TrainRescueDetail> getRescueDetail(@RequestParam Map requestParamMap) {
         return ResponseEntity.ok(trainRescueService.getRescueDetails(requestParamMap));
+    }
+
+    @GetMapping(value = "/{rescueId}/detail")
+    public ResponseEntity<TrainRescueDetail> getRescueDetail(@PathVariable(value = "rescueId") Integer rescueId) {
+        return ResponseEntity.ok(trainRescueService.getRescueDetails(rescueId));
     }
 }

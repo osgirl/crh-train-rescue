@@ -13,7 +13,7 @@ public interface TrainRescueService {
 
     List<TrainRescue> getRescues(Map<String, String> requestParamMap);
 
-    TrainRescueDetail getRescueDetails(Map requestParamMap);
+    TrainRescueDetail getRescueDetails(Map<String, String> requestParamMap);
 
     TrainRescueDetail getRescueDetails(Integer rescueId);
 }
