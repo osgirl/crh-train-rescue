@@ -15,11 +15,11 @@ import java.io.Serializable;
 public class TrainRescue implements Serializable {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     @Column(nullable = false)
-    private int rescueTrainId;
-    private int rescueTrainName;
+    private Integer rescueTrainId;
+    private Integer rescueTrainName;
     @Column(nullable = false)
-    private int toRescueTrainId;
+    private Integer toRescueTrainId;
     private String toRescueTrainName;
 }
