@@ -18,7 +18,7 @@ public class TrainRescue implements Serializable {
     private Integer id;
     @Column(nullable = false)
     private Integer rescueTrainId;
-    private Integer rescueTrainName;
+    private String rescueTrainName;
     @Column(nullable = false)
     private Integer toRescueTrainId;
     private String toRescueTrainName;

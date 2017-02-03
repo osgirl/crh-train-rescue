@@ -1,6 +1,7 @@
 package com.thoughtworks.crh_train_rescue.controller;
 
 import com.thoughtworks.crh_train_rescue.entity.TrainRescue;
+import com.thoughtworks.crh_train_rescue.entity.TrainRescueDetail;
 import com.thoughtworks.crh_train_rescue.service.TrainRescueService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,11 @@ public class TrainRescueController {
 
     @GetMapping
     public ResponseEntity<List<TrainRescue>> getRescue(@RequestParam Map requestParamMap) {
-        List<TrainRescue> rescues = trainRescueService.getRescues(requestParamMap);
-        return ResponseEntity.ok(rescues);
+        return ResponseEntity.ok(trainRescueService.getRescues(requestParamMap));
+    }
+
+    @GetMapping
+    public ResponseEntity<TrainRescueDetail> getRescueDetail(@RequestParam Map requestParamMap) {
+        return ResponseEntity.ok(trainRescueService.getRescueDetails(requestParamMap));
     }
 }

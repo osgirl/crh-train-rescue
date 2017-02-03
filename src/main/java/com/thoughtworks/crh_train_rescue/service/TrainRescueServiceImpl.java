@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class TrainRescueServiceImpl implements TrainRescueService {
@@ -28,12 +27,15 @@ public class TrainRescueServiceImpl implements TrainRescueService {
 
     public List<TrainRescue> getRescues(Map<String, String> requestParamMap) {
         TrainRescue trainRescue = new TrainRescue();
-        Integer tid = Integer.parseInt(requestParamMap.get("toRescueTrainId"));
-        Integer id = Integer.parseInt(requestParamMap.get("rescueTrainId"));
-        Optional<Integer> toRescueTrainId = Optional.of(tid);
-        Optional<Integer> rescueTrainId = Optional.of(id);
-        toRescueTrainId.ifPresent(trainRescue::setToRescueTrainId);
-        rescueTrainId.ifPresent(trainRescue::setRescueTrainId);
+        // TODO: 03/02/2017 define the string in a property file
+        String TO_RESCUE_TRAIN_ID = "toRescueTrainId";
+        String RESCUE_TRAIN_ID = "rescueTrainId";
+        if (requestParamMap.containsKey(TO_RESCUE_TRAIN_ID)) {
+            trainRescue.setToRescueTrainId(Integer.parseInt(requestParamMap.get(TO_RESCUE_TRAIN_ID)));
+        }
+        if (requestParamMap.containsKey(RESCUE_TRAIN_ID)) {
+            trainRescue.setRescueTrainId(Integer.parseInt(requestParamMap.get(RESCUE_TRAIN_ID)));
+        }
         return getRescueByExample(trainRescue);
     }
 }
