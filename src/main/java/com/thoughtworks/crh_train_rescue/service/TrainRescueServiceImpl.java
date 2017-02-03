@@ -25,7 +25,7 @@ public class TrainRescueServiceImpl implements TrainRescueService {
         this.trainRescueDetailRepository = trainRescueDetailRepository;
     }
 
-    public TrainRescue getTrainRescueById(int rescueId) {
+    public TrainRescue getTrainRescueById(Integer rescueId) {
         return trainRescueRepository.findOne(rescueId);
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface TrainRescueService {
-    TrainRescue getTrainRescueById(int rescueId);
+    TrainRescue getTrainRescueById(Integer rescueId);
 
     List<TrainRescue> getRescueByExample(TrainRescue trainRescue);
 

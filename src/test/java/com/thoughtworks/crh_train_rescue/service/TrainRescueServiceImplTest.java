@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -16,8 +16,8 @@ public class TrainRescueServiceImplTest {
     TrainRescueServiceImpl trainRescueService;
     @Test
     public void shouldReturnTrainRescueGivenId () {
-        TrainRescue trainRescue = trainRescueService.getTrainRescueById("1");
-        assertEquals(1,trainRescue.getRescueTrainId());
-        assertEquals(2,trainRescue.getToRescueTrainId());
+        TrainRescue trainRescue = trainRescueService.getTrainRescueById(1);
+        assertThat(trainRescue.getToRescueTrainId().equals(1));
+        assertThat(trainRescue.getRescueTrainId().equals(2));
     }
 }
